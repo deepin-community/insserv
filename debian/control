@@ -1,0 +1,35 @@
+Source: insserv
+Section: misc
+Priority: optional
+Maintainer: Debian sysvinit maintainers <debian-init-diversity@chiark.greenend.org.uk>
+Uploaders:
+ Petter Reinholdtsen <pere@debian.org>,
+ Mark Hindley <leepen@debian.org>,
+Build-Depends:
+ bash-completion,
+ debhelper-compat (= 12),
+ po-debconf,
+Standards-Version: 4.6.0
+Homepage: http://savannah.nongnu.org/projects/sysvinit
+Vcs-Browser: https://salsa.debian.org/debian/insserv
+Vcs-Git: https://salsa.debian.org/debian/insserv.git
+
+Package: insserv
+Architecture: any
+Depends:
+ ${misc:Depends},
+ ${shlibs:Depends},
+Suggests:
+ bootchart2,
+Breaks:
+ sysv-rc (<< 2.87dsf-3),
+Description: boot sequence organizer using LSB init.d script dependency information
+ The insserv program is used by the standard SysV-based init system. It
+ updates the order of symlinks in /etc/rc?.d/ based on dependencies
+ specified by LSB headers in the init.d scripts themselves.
+ .
+ These declared relations between scripts make it possible to optimize
+ the boot sequence for the currently installed set of packages, while
+ detecting and rejecting dependency loops.
+ .
+ Using insserv incorrectly can result in an unbootable system.
